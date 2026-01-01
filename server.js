@@ -8,8 +8,7 @@ const app = express();
 const PORT = 8000
 app.use(express.json());
 
-await initSqlDb();
-await initMongoDb();
+
 
 app.use((req, res, next) => {
   req.mysqlConn = getMysqlConnection();
@@ -24,4 +23,8 @@ app.use('/api/users', ()=>{})
 
 
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`)
+    initSqlDb();
+    initMongoDb();
+});
