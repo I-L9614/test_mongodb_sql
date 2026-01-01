@@ -1,5 +1,4 @@
-export function encrypt(message) {
+export function reverse(message) {
     const cipherMessage = message.split('').reverse().join('')
-    console.log(cipherMessage)
     return cipherMessage
 }

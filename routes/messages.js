@@ -13,7 +13,7 @@ router.route('/encrypt')
 
 
 router.route('/decrypt')
-    .post(()=>{})
+    .post(messagesControllers.decryptMessage)
 
 
 
