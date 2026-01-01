@@ -1,7 +1,8 @@
 import express from 'express';
 import { initSqlDb, getMysqlConnection } from './utils/mysql.js';
 import { initMongoDb, getMongoDbConnection } from './utils/mongodb.js';
-
+import messagesRouter from './routes/messages.js'
+import usersRouter from './routes/users.js'
 
 const app = express();
 const PORT = 8000
@@ -17,10 +18,10 @@ app.use((req, res, next) => {
 })
 
 
-app.use('/api/auth')
-app.use('/api/messages')
-app.use('/api/users')
+app.use('/api/auth',usersRouter)
+app.use('/api/messages',messagesRouter)
+app.use('/api/users', ()=>{})
 
 
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT }`));
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
